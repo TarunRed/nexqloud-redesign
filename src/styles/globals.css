@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cursor-size: 12px;
+    --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: #080d2c;
+    color: #ffffff;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #5c9cff;
+    color: #080d2c;
+  }
+
+  /* Custom cursor hides the OS cursor everywhere except the COBE globe */
+  *:not(.globe-canvas) {
+    cursor: none !important;
+  }
+
+  .globe-canvas {
+    cursor: grab;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+
+  /*
+    Only <section> and <footer> get position:relative + z-index:1.
+    Explicitly NOT applying to all `main > *` so GSAP's pin-spacer <div>s
+    don't get forced z-index and break the fixed-position stacking context.
+  */
+  main > section,
+  footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Cards ──────────────────────────────────────────────────────── */
+
+  .glass-card {
+    background: rgba(29, 34, 66, 0.90);
+    border: 1px solid rgba(80, 93, 170, 0.22);
+    border-radius: 1rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-expo);
+  }
+
+  /* Darker inset card */
+  .navy-card {
+    background: rgba(9, 14, 45, 0.92);
+    border: 1px solid rgba(80, 93, 170, 0.16);
+    border-radius: 0.875rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-expo);
+  }
+
+  /*
+    Lucien-style card hover: very subtle lift + thin top-edge light line.
+    Apply `.card-hover` to any card that should respond to pointer.
+  */
+  .card-hover:hover {
+    transform: translateY(-3px);
+    border-color: rgba(92, 156, 255, 0.28);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+      0 12px 40px rgba(0, 0, 0, 0.28),
+      0 0 24px rgba(92, 156, 255, 0.06);
+  }
+
+  /* Thin bright top-line on hover — Lucien signature detail */
+  .card-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(92,156,255,0.35), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0;
+    pointer-events: none;
+  }
+
+  .card-hover:hover::before {
+    opacity: 1;
+  }
+
+  /* ── Buttons ────────────────────────────────────────────────────── */
+
+  /* Lucien primary: white bg + navy text */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    background: #ffffff;
+    color: #080d2c;
+    border: 1px solid #ffffff;
+    transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+    white-space: nowrap;
+  }
+  .btn-primary:hover {
+    background: #ccd5e5;
+    border-color: #ccd5e5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(204, 213, 229, 0.15);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Lucien secondary: transparent + white border */
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
+    white-space: nowrap;
+  }
+  .btn-outline:hover {
+    border-color: rgba(92, 156, 255, 0.55);
+    color: #ccd5e5;
+    transform: translateY(-1px);
+  }
+  .btn-outline:active {
+    transform: translateY(0);
+  }
+
+  /* ── Typography helpers ─────────────────────────────────────────── */
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5c9cff;
+  }
+
+  /* Lucien-style link with animated underline */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+    color: #7089c0;
+    transition: color 0.22s ease;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #5c9cff;
+    transition: width 0.3s var(--ease-expo);
+  }
+  .link-underline:hover {
+    color: #ffffff;
+  }
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Nav link — same pattern, different default color */
+  .nav-link {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #5c9cff;
+    transition: width 0.28s var(--ease-expo);
+  }
+  .nav-link:hover::after,
+  .nav-link[data-active]::after {
+    width: 100%;
+  }
+
+  /* ── Layout helpers ─────────────────────────────────────────────── */
+
+  .section-pad {
+    padding-left: clamp(1.5rem, 5vw, 5rem);
+    padding-right: clamp(1.5rem, 5vw, 5rem);
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #5c9cff 0%, #7089c0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-divider {
+    border-top: 1px solid rgba(80, 93, 170, 0.15);
+  }
+
+  /* ── Noise overlay ──────────────────────────────────────────────── */
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.022;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* ── Tier badges ────────────────────────────────────────────────── */
+
+  .tier-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6875rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.375rem;
+    border: 1px solid;
+    letter-spacing: 0.05em;
+  }
+  .tier-a { color: #22d39b; border-color: rgba(34,211,155,0.3); background: rgba(34,211,155,0.08); }
+  .tier-b { color: #2dd4bf; border-color: rgba(45,212,191,0.3); background: rgba(45,212,191,0.08); }
+  .tier-c { color: #5c9cff; border-color: rgba(92,156,255,0.3); background: rgba(92,156,255,0.08); }
+  .tier-d { color: #9ca3ff; border-color: rgba(156,163,255,0.3); background: rgba(156,163,255,0.08); }
+
+  /* ── Glow helpers ───────────────────────────────────────────────── */
+
+  .glow-blue {
+    box-shadow: 0 0 40px rgba(92,156,255,0.18), 0 0 80px rgba(92,156,255,0.07);
+  }
+  .glow-green {
+    box-shadow: 0 0 40px rgba(34,211,155,0.18), 0 0 80px rgba(34,211,155,0.07);
+  }
+
+  /* ── Animations ─────────────────────────────────────────────────── */
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(92,156,255,0.4); }
+    50%       { box-shadow: 0 0 0 6px rgba(92,156,255,0); }
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
