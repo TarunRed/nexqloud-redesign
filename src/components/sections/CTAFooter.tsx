@@ -324,11 +324,11 @@ export function CTAFooter() {
           style={{
             opacity: 0,
             overflow: 'hidden',
-            paddingLeft: 'clamp(1rem, 2vw, 3rem)',
-            paddingBottom: 'clamp(1rem, 2vw, 2.5rem)',
+            padding: '0 clamp(1rem, 2vw, 3rem) clamp(1rem, 2vw, 2.5rem)',
             userSelect: 'none',
             position: 'relative',
             zIndex: 10,
+            textAlign: 'center',
           }}
         >
           <div
