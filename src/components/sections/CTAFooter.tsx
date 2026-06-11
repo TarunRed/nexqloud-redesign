@@ -241,39 +241,43 @@ export function CTAFooter() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          FOOTER — pure minimal: nav links → massive stroke wordmark → copyright
-          Lucien pattern: nothing extra, the wordmark IS the footer
+          FOOTER — minimal: logo + nav → giant filled-ghost wordmark → copyright
       ═══════════════════════════════════════════════════════════════════ */}
       <footer
         id="section-footer"
         className="relative overflow-hidden"
-        style={{ background: '#030510' }}
+        style={{ background: '#060c1e' }}
       >
-        {/* Atmospheric horizon glow — replaces Lucien's background image */}
+        {/* Deep blue horizon glow — atmospheric depth without a photo */}
         <div
           className="absolute inset-0 pointer-events-none"
           aria-hidden
           style={{
-            background: [
-              'radial-gradient(ellipse 90% 50% at 50% 110%, rgba(14,28,110,0.35) 0%, transparent 60%)',
-              'radial-gradient(ellipse 50% 30% at 20% 100%, rgba(92,156,255,0.06) 0%, transparent 50%)',
-            ].join(', '),
+            background:
+              'radial-gradient(ellipse 110% 55% at 50% 120%, rgba(18,36,130,0.45) 0%, transparent 58%)',
           }}
         />
 
-        {/* Hairline top border */}
-        <div style={{ height: '1px', background: 'rgba(255,255,255,0.05)' }} />
+        {/* Glowing separator line at top */}
+        <div
+          aria-hidden
+          style={{
+            height: '1px',
+            background:
+              'linear-gradient(to right, transparent 0%, rgba(92,156,255,0.3) 35%, rgba(156,163,255,0.3) 65%, transparent 100%)',
+          }}
+        />
 
-        {/* Nav row */}
+        {/* Nav row — logo left, links right */}
         <div
           ref={footerLinksRef}
-          className="opacity-0"
           style={{
+            opacity: 0,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
-            gap: '1.5rem',
+            gap: '1.25rem',
             padding: 'clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 5vw, 5rem)',
             maxWidth: '80rem',
             margin: '0 auto',
@@ -281,66 +285,64 @@ export function CTAFooter() {
             zIndex: 10,
           }}
         >
-          {/* Logo */}
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', textDecoration: 'none', flexShrink: 0 }}>
-            <svg width="18" height="18" viewBox="0 0 56 56" fill="none">
-              <polygon points="28,4 50,16 50,40 28,52 6,40 6,16" stroke="#5c9cff" strokeWidth="1.5" fill="none" opacity="0.5" />
-              <circle cx="28" cy="28" r="4" fill="#5c9cff" />
-            </svg>
-            <span className="font-display font-semibold text-white" style={{ fontSize: '0.9375rem' }}>NexQloud</span>
-          </a>
+          {/* Logo + tagline */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', textDecoration: 'none' }}>
+              <svg width="18" height="18" viewBox="0 0 56 56" fill="none">
+                <polygon points="28,4 50,16 50,40 28,52 6,40 6,16" stroke="#5c9cff" strokeWidth="1.5" fill="none" opacity="0.55" />
+                <circle cx="28" cy="28" r="4" fill="#5c9cff" />
+              </svg>
+              <span className="font-display font-semibold text-white" style={{ fontSize: '0.9375rem' }}>NexQloud</span>
+            </a>
+            <span className="font-mono" style={{ fontSize: '0.625rem', color: '#3a4f72', letterSpacing: '0.1em' }}>
+              DECENTRALIZED CLOUD INFRASTRUCTURE
+            </span>
+          </div>
 
-          {/* Arrow-slide nav links — Lucien pattern */}
-          <nav style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.25rem 1.75rem' }}>
+          {/* Nav links — simple, clean, hover brightens */}
+          <nav style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 2rem' }}>
             {NAV_LINKS.map((link) => (
               <a
                 key={link}
                 href="#"
-                className="group"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', textDecoration: 'none' }}
+                className="font-body footer-nav-text"
+                style={{ fontSize: '0.875rem', textDecoration: 'none' }}
               >
-                {/* Right-arrow — invisible, slides in on hover */}
-                <svg
-                  width="12" height="12" viewBox="0 0 16 16" fill="none"
-                  className="transition-all duration-[220ms] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
-                  style={{ color: '#5c9cff', flexShrink: 0 }}
-                >
-                  <path d="M14 8L10.5 4.5L9.793 5.207L12.086 7.5H2V8.5H12.086L9.793 10.793L10.5 11.5L14 8Z" fill="currentColor" />
-                </svg>
-                <span className="font-body footer-nav-text" style={{ fontSize: '0.8125rem' }}>
-                  {link}
-                </span>
+                {link}
               </a>
             ))}
           </nav>
         </div>
 
-        {/* ── Giant stroke wordmark ─────────────────────────────────────────── */}
-        {/*
-          Full-viewport-width: no max-width, just left padding.
-          Stroke outline: color:transparent + WebkitTextStroke → hollow letterforms.
-          At large sizes this reads as structural/architectural — very minimal.
-        */}
+        {/* ── Giant filled-ghost wordmark ───────────────────────────────────
+            No max-width — fills viewport. Color is a fixed semi-transparent
+            white so it's always legible as a ghost (not fading to invisible).
+        ──────────────────────────────────────────────────────────────── */}
         <div
           ref={wordmarkRef}
-          className="select-none overflow-hidden opacity-0"
+          aria-hidden
           style={{
-            paddingLeft: 'clamp(1rem, 2.5vw, 3.5rem)',
-            paddingBottom: 'clamp(1.5rem, 3vw, 3rem)',
+            opacity: 0,
+            overflow: 'hidden',
+            paddingLeft: 'clamp(1rem, 2vw, 3rem)',
+            paddingBottom: 'clamp(1rem, 2vw, 2.5rem)',
+            userSelect: 'none',
             position: 'relative',
             zIndex: 10,
           }}
-          aria-hidden
         >
           <div
             className="font-display font-black"
             style={{
-              fontSize: 'clamp(7.5rem, 23.5vw, 20rem)',
+              fontSize: 'clamp(6.5rem, 21vw, 18rem)',
               lineHeight: 0.88,
-              letterSpacing: '-0.04em',
-              color: 'transparent',
-              WebkitTextStroke: '1.5px rgba(255,255,255,0.14)',
+              letterSpacing: '-0.045em',
               whiteSpace: 'nowrap',
+              /* Filled ghost — always visible, not fading to transparent */
+              background: 'linear-gradient(160deg, rgba(255,255,255,0.13) 0%, rgba(92,156,255,0.08) 55%, rgba(255,255,255,0.05) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
             }}
           >
             NexQloud
@@ -355,13 +357,13 @@ export function CTAFooter() {
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '0.75rem',
-            padding: 'clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 5vw, 5rem)',
-            borderTop: '1px solid rgba(255,255,255,0.04)',
+            padding: 'clamp(1.25rem, 2vw, 1.75rem) clamp(1.5rem, 5vw, 5rem)',
+            borderTop: '1px solid rgba(255,255,255,0.05)',
             position: 'relative',
             zIndex: 10,
           }}
         >
-          <p className="font-mono" style={{ color: '#1e2c4a', fontSize: '0.625rem', letterSpacing: '0.06em' }}>
+          <p className="font-mono" style={{ color: '#3a4f72', fontSize: '0.625rem', letterSpacing: '0.06em' }}>
             © 2025 NEXQLOUD TECHNOLOGIES, INC. · ALL RIGHTS RESERVED.
           </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
