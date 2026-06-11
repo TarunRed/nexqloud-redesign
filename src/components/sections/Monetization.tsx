@@ -59,7 +59,7 @@ export function Monetization() {
               }}
             >
               Decentralized earnings.<br />
-              <span style={{ color: '#3d5181', fontWeight: 300 }}>Real-world impact.</span>
+              <span style={{ color: '#6878a8', fontWeight: 300 }}>Real-world impact.</span>
             </h2>
             <p
               className="font-body mb-8"
@@ -114,7 +114,7 @@ export function Monetization() {
                 style={{ borderBottom: '1px solid rgba(80,93,170,0.15)' }}
               >
                 <div>
-                  <div className="eyebrow mb-1" style={{ color: '#3d5181', fontSize: '0.5625rem' }}>NXQ Token</div>
+                  <div className="eyebrow mb-1" style={{ color: '#6878a8', fontSize: '0.5625rem' }}>NXQ Token</div>
                   <div
                     className="font-display font-bold text-white"
                     style={{ fontSize: '2.5rem', letterSpacing: '-0.04em', lineHeight: 1 }}
@@ -136,7 +136,7 @@ export function Monetization() {
 
               {/* Earnings calculator */}
               <div>
-                <div className="eyebrow mb-4" style={{ color: '#3d5181', fontSize: '0.5625rem' }}>Node Earnings Calculator</div>
+                <div className="eyebrow mb-4" style={{ color: '#6878a8', fontSize: '0.5625rem' }}>Node Earnings Calculator</div>
                 {[
                   { tier: 'Tier C', nodes: 1, monthly: '$487', nxq: '12.4 NXQ/day' },
                   { tier: 'Tier D', nodes: 3, monthly: '$1,240', nxq: '31.8 NXQ/day' },

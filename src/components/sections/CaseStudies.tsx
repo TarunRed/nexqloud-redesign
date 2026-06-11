@@ -1,6 +1,13 @@
 import { useEffect, useRef } from 'react'
+import type React from 'react'
 import { gsap, ScrollTrigger } from '../../lib/gsap'
 import { caseStudies, trustTiers } from '../../data'
+
+function setSpotlight(e: React.MouseEvent<HTMLElement>) {
+  const rect = e.currentTarget.getBoundingClientRect()
+  e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
+  e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
+}
 
 export function CaseStudies() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -18,7 +25,7 @@ export function CaseStudies() {
 
     const onDown = (e: PointerEvent) => {
       isDragging.current = true
-      startX.current = e.clientX - track.scrollLeft
+      startX.current = e.clientX + track.scrollLeft
       scrollLeft.current = track.scrollLeft
       lastX.current = e.clientX
       velocity.current = 0
@@ -95,9 +102,9 @@ export function CaseStudies() {
             }}
           >
             Real savings.<br />
-            <span style={{ color: '#3d5181' }}>Real companies.</span>
+            <span style={{ color: '#6878a8' }}>Real companies.</span>
           </h2>
-          <span className="eyebrow hidden md:block" style={{ color: '#3d5181', flexShrink: 0 }}>
+          <span className="eyebrow hidden md:block" style={{ color: '#6878a8', flexShrink: 0 }}>
             ← Drag to explore →
           </span>
         </div>
@@ -118,7 +125,7 @@ export function CaseStudies() {
           return (
             <div
               key={i}
-              className="flex-shrink-0 navy-card card-hover p-7 flex flex-col justify-between relative"
+              className="flex-shrink-0 navy-card card-hover card-spotlight overflow-hidden p-7 flex flex-col justify-between relative"
               style={{
                 width: 'min(80vw, 360px)',
                 minHeight: '280px',
@@ -127,6 +134,7 @@ export function CaseStudies() {
                   ? `linear-gradient(135deg, ${tier.color}04, rgba(9,14,45,0.92))`
                   : undefined,
               }}
+              onMouseMove={setSpotlight}
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-5">
@@ -162,11 +170,11 @@ export function CaseStudies() {
                   >
                     {cs.result}
                   </div>
-                  <div className="eyebrow mt-0.5" style={{ color: '#3d5181', fontSize: '0.5625rem' }}>{cs.metric}</div>
+                  <div className="eyebrow mt-0.5" style={{ color: '#6878a8', fontSize: '0.5625rem' }}>{cs.metric}</div>
                 </div>
                 <div className="text-right">
                   <div className="font-display font-semibold text-white" style={{ fontSize: '0.875rem' }}>{cs.company}</div>
-                  <div className="eyebrow mt-0.5" style={{ color: '#3d5181', fontSize: '0.5625rem' }}>{cs.industry}</div>
+                  <div className="eyebrow mt-0.5" style={{ color: '#6878a8', fontSize: '0.5625rem' }}>{cs.industry}</div>
                 </div>
               </div>
             </div>

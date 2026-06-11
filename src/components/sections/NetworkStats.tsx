@@ -50,7 +50,7 @@ function Odometer({ value, suffix, label, index }: { value: number; suffix: stri
         <span ref={numRef}>0</span>
         <span style={{ color: '#5c9cff' }}>{suffix}</span>
       </div>
-      <div className="eyebrow" style={{ color: '#3d5181', fontSize: '0.625rem' }}>{label}</div>
+      <div className="eyebrow" style={{ color: '#6878a8', fontSize: '0.625rem' }}>{label}</div>
     </div>
   )
 }
@@ -122,7 +122,7 @@ export function NetworkStats() {
                 </span>
               </div>
               <div className="w-px h-4" style={{ background: tier.color + '25' }} />
-              <span className="font-mono" style={{ fontSize: '0.6875rem', color: tier.id === 'A' || tier.id === 'B' ? '#3d5181' : '#22d39b' }}>
+              <span className="font-mono" style={{ fontSize: '0.6875rem', color: tier.id === 'A' || tier.id === 'B' ? '#6878a8' : '#22d39b' }}>
                 {tier.id === 'A' || tier.id === 'B' ? 'Coming Soon' : 'Live'}
               </span>
               <span className="font-display font-semibold text-white" style={{ fontSize: '0.875rem' }}>

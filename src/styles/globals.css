@@ -271,6 +271,42 @@
     box-shadow: 0 0 40px rgba(34,211,155,0.18), 0 0 80px rgba(34,211,155,0.07);
   }
 
+  /*
+    Cursor spotlight — add this class + onMouseMove that sets --mouse-x / --mouse-y.
+    Uses ::after so it doesn't conflict with the ::before top-edge shine on .card-hover.
+  */
+  .card-spotlight {
+    isolation: isolate;
+  }
+  .card-spotlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      300px circle at var(--mouse-x, -300px) var(--mouse-y, -300px),
+      rgba(92, 156, 255, 0.10) 0%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .card-spotlight:hover::after {
+    opacity: 1;
+  }
+
+  /* ── Footer nav links ──────────────────────────────────────────── */
+
+  .footer-nav-text {
+    color: #6878a8;
+    transition: color 0.2s ease;
+  }
+  .group:hover .footer-nav-text {
+    color: #ccd5e5;
+  }
+
   /* ── Animations ─────────────────────────────────────────────────── */
 
   @keyframes float {

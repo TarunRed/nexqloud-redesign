@@ -14,7 +14,7 @@ import { NetworkStats } from './components/sections/NetworkStats'
 import { Monetization } from './components/sections/Monetization'
 import { CaseStudies } from './components/sections/CaseStudies'
 import { CTAFooter } from './components/sections/CTAFooter'
-import { initSmoothScroll, gsap, ScrollTrigger } from './lib/gsap'
+import { initSmoothScroll, destroySmoothScroll, gsap, ScrollTrigger } from './lib/gsap'
 
 export default function App() {
   const [ready, setReady] = useState(false)
@@ -40,7 +40,7 @@ export default function App() {
     return () => {
       cancelAnimationFrame(rafA)
       cancelAnimationFrame(rafB)
-      lenis.destroy()
+      destroySmoothScroll()
     }
   }, [ready])
 

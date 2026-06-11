@@ -56,6 +56,8 @@ export function Preloader({ onComplete }: PreloaderProps) {
         if (rootRef.current) rootRef.current.style.display = 'none'
       },
     })
+
+    return () => { tl.kill() }
   }, [onComplete])
 
   return (

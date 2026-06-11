@@ -79,7 +79,7 @@ export function ProblemSolution() {
             }}
           >
             Legacy clouds waste<br />
-            <span style={{ color: '#3d5181' }}>your resources.</span>
+            <span style={{ color: '#6878a8' }}>your resources.</span>
           </h2>
         </div>
 

@@ -110,7 +110,7 @@ export function Stakeholders() {
           }}
         >
           NexQloud works smarter<br />
-          <span style={{ color: '#3d5181' }}>for your entire team.</span>
+          <span style={{ color: '#6878a8' }}>for your entire team.</span>
         </h2>
       </div>
 
@@ -259,7 +259,7 @@ export function Stakeholders() {
                             fontSize: '0.5625rem',
                             letterSpacing: '0.1em',
                             textTransform: 'uppercase',
-                            color: '#3d5181',
+                            color: '#6878a8',
                             lineHeight: 1.4,
                           }}
                         >
@@ -290,7 +290,7 @@ export function Stakeholders() {
             borderRadius: '50%',
             border: '1px solid rgba(80,93,170,0.25)',
             background: 'rgba(29,34,66,0.6)',
-            color: active === 0 ? '#3d5181' : '#ffffff',
+            color: active === 0 ? '#6878a8' : '#ffffff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -313,7 +313,7 @@ export function Stakeholders() {
                 borderRadius: '9999px',
                 border: `1px solid ${i === active ? sl.color + '55' : 'rgba(80,93,170,0.18)'}`,
                 background: i === active ? sl.color + '12' : 'transparent',
-                color: i === active ? sl.color : '#3d5181',
+                color: i === active ? sl.color : '#6878a8',
                 fontFamily: '"IBM Plex Mono", monospace',
                 fontSize: '0.625rem',
                 letterSpacing: '0.1em',
@@ -340,7 +340,7 @@ export function Stakeholders() {
             borderRadius: '50%',
             border: '1px solid rgba(80,93,170,0.25)',
             background: 'rgba(29,34,66,0.6)',
-            color: active === stakeholders.length - 1 ? '#3d5181' : '#ffffff',
+            color: active === stakeholders.length - 1 ? '#6878a8' : '#ffffff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

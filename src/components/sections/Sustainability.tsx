@@ -133,7 +133,7 @@ export function Sustainability() {
             }}
           >
             88% less energy.<br />
-            <span style={{ color: '#3d5181' }}>Zero performance loss.</span>
+            <span style={{ color: '#6878a8' }}>Zero performance loss.</span>
           </h2>
           <p
             className="font-body mt-5 mx-auto opacity-0"
@@ -225,7 +225,7 @@ export function Sustainability() {
                   </div>
                   <div
                     className="eyebrow mt-0.5"
-                    style={{ color: '#3d5181', fontSize: '0.5625rem' }}
+                    style={{ color: '#6878a8', fontSize: '0.5625rem' }}
                   >
                     Online · Tier C
                   </div>

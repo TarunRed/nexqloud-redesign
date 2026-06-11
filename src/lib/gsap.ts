@@ -7,8 +7,15 @@ import Lenis from 'lenis'
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
 
 let lenis: Lenis | null = null
+let lenisRaf: ((time: number) => void) | null = null
 
 export function initSmoothScroll(): Lenis {
+  // Remove any previous ticker callback before creating a new one (StrictMode safety)
+  if (lenisRaf) {
+    gsap.ticker.remove(lenisRaf)
+    lenisRaf = null
+  }
+
   lenis = new Lenis({
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -18,13 +25,22 @@ export function initSmoothScroll(): Lenis {
 
   lenis.on('scroll', ScrollTrigger.update)
 
-  gsap.ticker.add((time) => {
-    lenis?.raf(time * 1000)
-  })
-
+  lenisRaf = (time: number) => { lenis?.raf(time * 1000) }
+  gsap.ticker.add(lenisRaf)
   gsap.ticker.lagSmoothing(0)
 
   return lenis
+}
+
+export function destroySmoothScroll(): void {
+  if (lenisRaf) {
+    gsap.ticker.remove(lenisRaf)
+    lenisRaf = null
+  }
+  if (lenis) {
+    lenis.destroy()
+    lenis = null
+  }
 }
 
 export function getLenis(): Lenis | null {

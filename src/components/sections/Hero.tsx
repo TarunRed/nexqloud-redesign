@@ -222,7 +222,7 @@ export function Hero() {
           ref={descRef}
           style={{
             opacity: 0,
-            color: '#3d5181',
+            color: '#6878a8',
             maxWidth: '42ch',
             fontSize: '0.9375rem',
             lineHeight: 1.6,
@@ -279,7 +279,7 @@ export function Hero() {
               </div>
               <div
                 className="eyebrow mt-1"
-                style={{ fontSize: '0.6rem', color: '#3d5181' }}
+                style={{ fontSize: '0.6rem', color: '#6878a8' }}
               >
                 {stat.label}
               </div>
@@ -305,12 +305,12 @@ export function Hero() {
           pointerEvents: 'none',
         }}
       >
-        <span className="eyebrow" style={{ fontSize: '0.6rem', color: '#3d5181' }}>Scroll</span>
+        <span className="eyebrow" style={{ fontSize: '0.6rem', color: '#6878a8' }}>Scroll</span>
         <div
           style={{
             width: '1px',
             height: '2rem',
-            background: 'linear-gradient(to bottom, #3d5181, transparent)',
+            background: 'linear-gradient(to bottom, #6878a8, transparent)',
             animation: 'float 2.4s ease-in-out infinite',
           }}
         />
@@ -363,7 +363,7 @@ export function Hero() {
         }}
       >
         <span style={{ fontSize: '0.875rem', filter: 'grayscale(1)', opacity: 0.4 }}>✋</span>
-        <span className="eyebrow" style={{ fontSize: '0.6rem', color: '#3d5181' }}>Drag globe to rotate</span>
+        <span className="eyebrow" style={{ fontSize: '0.6rem', color: '#6878a8' }}>Drag globe to rotate</span>
       </div>
     </section>
   )

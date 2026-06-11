@@ -127,15 +127,15 @@ export function TrustTier() {
       <div className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center gap-2">
         <span
           className="eyebrow"
-          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', color: '#3d5181', fontSize: '0.5625rem' }}
+          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', color: '#6878a8', fontSize: '0.5625rem' }}
         >
           Trust Level
         </span>
-        <div className="w-1.5 h-28 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
+        <div className="w-1.5 h-28 rounded-full overflow-hidden relative" style={{ background: 'rgba(255,255,255,0.06)' }}>
           <div
             ref={meterFillRef}
-            className="w-full rounded-full"
-            style={{ height: '25%', background: '#22d39b', marginTop: 'auto', position: 'relative' }}
+            className="w-full rounded-full absolute bottom-0"
+            style={{ height: '25%', background: '#22d39b' }}
           />
         </div>
         <span ref={meterLabelRef} className="font-display font-bold" style={{ fontSize: '0.875rem', color: '#22d39b' }}>
@@ -187,7 +187,7 @@ export function TrustTier() {
                   >
                     {tier.savings}
                   </div>
-                  <div className="eyebrow" style={{ color: '#3d5181', fontSize: '0.5625rem' }}>avg savings</div>
+                  <div className="eyebrow" style={{ color: '#6878a8', fontSize: '0.5625rem' }}>avg savings</div>
                 </div>
               </div>
 
@@ -197,7 +197,7 @@ export function TrustTier() {
 
               {/* Workloads */}
               <div className="mb-6">
-                <div className="eyebrow mb-3" style={{ color: '#3d5181', fontSize: '0.5625rem' }}>Workloads</div>
+                <div className="eyebrow mb-3" style={{ color: '#6878a8', fontSize: '0.5625rem' }}>Workloads</div>
                 <div className="flex flex-wrap gap-2">
                   {tier.workloads.map((w) => (
                     <span
@@ -220,7 +220,7 @@ export function TrustTier() {
 
               {/* Compliance */}
               <div className="mb-6">
-                <div className="eyebrow mb-3" style={{ color: '#3d5181', fontSize: '0.5625rem' }}>Compliance</div>
+                <div className="eyebrow mb-3" style={{ color: '#6878a8', fontSize: '0.5625rem' }}>Compliance</div>
                 <div className="flex flex-wrap gap-2">
                   {tier.compliance.map((c) => (
                     <span
@@ -256,9 +256,9 @@ export function TrustTier() {
         className="absolute bottom-8 left-1/2 hidden md:flex items-center gap-2"
         style={{ transform: 'translateX(-50%)', zIndex: 20 }}
       >
-        <div className="eyebrow" style={{ color: '#3d5181', fontSize: '0.5625rem' }}>Scroll to explore tiers</div>
+        <div className="eyebrow" style={{ color: '#6878a8', fontSize: '0.5625rem' }}>Scroll to explore tiers</div>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M2 7H12M7.5 3L12 7L7.5 11" stroke="#3d5181" strokeWidth="1.2" strokeLinecap="round" />
+          <path d="M2 7H12M7.5 3L12 7L7.5 11" stroke="#6878a8" strokeWidth="1.2" strokeLinecap="round" />
         </svg>
       </div>
 
